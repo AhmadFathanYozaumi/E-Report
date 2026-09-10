@@ -21,6 +21,10 @@ section {
     width: 50%;
 }
 
+.kategori {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 @media screen and (max-width:510px) {
     .hero .col img {
         width: 100%;
