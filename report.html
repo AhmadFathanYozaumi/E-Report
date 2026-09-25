@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | E-Report IDN</title>
+    <title>Semua Laporan | E-Report IDN</title>
     <link
       rel="shortcut icon"
       href="./assets/images/IDN-Logo.png"
@@ -37,10 +37,37 @@
 
     <!-- CDN AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Report card hover */
+      .report-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      }
+      .report-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(13, 110, 253, 0.18);
+      }
+
+      /* Page Hero Banner */
+      .page-hero {
+        background: linear-gradient(135deg, #cfe2ff 0%, #e9f3ff 100%);
+        border-radius: 16px;
+        padding: 48px 40px;
+      }
+
+      /* Status badge */
+      .status-ditangani { background-color: #198754; }
+      .status-proses { background-color: #fd7e14; }
+      .status-baru { background-color: #0d6efd; }
+    </style>
   </head>
   <body>
     <!-- NavBar -->
-     <nav
+    <nav
       class="navbar navbar-expand-lg bg-primary-subtle py-4 animate__animated animate__fadeInDown animate__slow"
     >
       <div class="container">
@@ -67,27 +94,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto gap-4 pt-4 pt-lg-0 text-center">
             <li class="nav-item">
-              <a class="nav-link text-primary active" href="index.html#hero"
-                >Home</a
-              >
+              <a class="nav-link text-primary" href="index.html#hero">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-primary" href="index.html#about">About</a>
             </li>
-            <li class="nav-item tex">
-              <a class="nav-link text-primary" href="index.html#service"
-                >Services</a
-              >
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="index.html#service">Services</a>
             </li>
-            <li class="nav-item tex">
-              <a class="nav-link text-primary" href="index.html#recent"
-                >Recent</a
-              >
+            <li class="nav-item active">
+              <a class="nav-link text-primary fw-semibold" href="report.html">Recent</a>
             </li>
-            <li class="nav-item tex">
+            <li class="nav-item">
               <a class="nav-link text-primary" href="index.html#faq">FAQ</a>
             </li>
-            <li class="nav-item tex">
+            <li class="nav-item">
               <a class="nav-link text-primary" href="panduan.html">Guide</a>
             </li>
           </ul>
@@ -98,354 +119,299 @@
     <!-- Semua Laporan -->
     <section id="reports">
       <div class="container">
-        <!-- judul -->
-        <div
-          class="d-flex flex-column flex-lg-row text-center text-lg-start align-items-center justify-content-between gap-26"
-        >
-          <div class="col-8">
-            <h1 class="fw-bold text-primary-emphasis">Semua Laporan</h1>
-            <p class="text-secondary lh-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-              sapiente maiores veniam non commodi quidem, tenetur animi neque,
-              veritatis deserunt rem illo explicabo expedita accusamus?
-            </p>
-          </div>
-
-          <div class="col-2">
-            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="fa-solid fa-plus"></i> Tambah Laporan
-            </button>
+        <!-- Page Hero Banner -->
+        <div class="page-hero animate__animated animate__fadeIn animate__delay-1s mb-5">
+          <div class="row align-items-center flex-column flex-lg-row text-center text-lg-start gap-3">
+            <div class="col">
+              <h1 class="fw-bold text-primary mb-2">
+                <i class="fa-solid fa-list-check me-2"></i> Semua Laporan
+              </h1>
+              <p class="text-secondary lh-lg mb-0">
+                Temukan dan pantau seluruh laporan yang telah dikirimkan oleh warga sekolah. Setiap laporan ditangani secara transparan dan bertanggung jawab oleh pihak yang berwenang.
+              </p>
+            </div>
+            <div class="col-lg-auto">
+              <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-plus me-1"></i> Tambah Laporan
+              </button>
+            </div>
           </div>
         </div>
+
         <!-- filter -->
-        <div class="row gap-3 gap-md-0 mt-5">
+        <div class="row gap-3 gap-md-0 mb-4">
           <div class="col-md-4">
-            <input type="text" class="form-control" placeholder="Search " />
+            <input type="text" class="form-control shadow-sm" placeholder="&#128269; Cari laporan..." />
           </div>
           <div class="col">
-            <select class="form-select">
-              <option value="">Pilih kategori!</option>
+            <select class="form-select shadow-sm">
+              <option value="">Semua Kategori</option>
               <option value="akademik">Akademik</option>
               <option value="fasilitas">Fasilitas</option>
               <option value="anonymous">Anonymous</option>
             </select>
           </div>
           <div class="col">
-            <select class="form-select">
-              <option value="">Urutkan</option>
+            <select class="form-select shadow-sm">
+              <option value="">Urutkan Berdasarkan</option>
               <option value="terbaru">Terbaru</option>
               <option value="terlama">Terlama</option>
             </select>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-primary w-100">
-              <i class="fa-solid fa-filter"></i>
-              Filter
+            <button class="btn btn-primary w-100 shadow-sm">
+              <i class="fa-solid fa-filter me-1"></i> Filter
             </button>
           </div>
         </div>
 
-        <!-- Report -->
-        <div class="row mt-5">
+        <!-- Report Cards -->
+        <div class="row mt-2">
+          <!-- Card 1 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
                 <a class="text-decoration-none px-3 text-white">Akademik</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/Akademik.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/Akademik.png" class="card-img-top" alt="Laporan Akademik" />
               <div class="card-body">
-                <h5 class="card-title">Pelajaran sudah di mengerti</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Materi Tidak Disampaikan dengan Jelas</h5>
+                  <span class="badge status-ditangani text-white ms-2 flex-shrink-0">Ditangani</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user me-1"></i>Fathan &bull; 2 hari lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Guru tidak menjelaskan materi dengan baik sehingga siswa kesulitan memahami pelajaran yang diberikan.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 2 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
                 <a class="text-decoration-none px-3 text-white">Fasilitas</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/keran-rusak.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/keran-rusak.png" class="card-img-top" alt="Keran Rusak" />
               <div class="card-body">
-                <h5 class="card-title">kerannya Rusak</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  So--me quick example text to build on the card title and make
-                  up the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Keran Air di Toilet Lantai 2 Bocor</h5>
+                  <span class="badge status-proses text-white ms-2 flex-shrink-0">Diproses</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user me-1"></i>Fathan &bull; 3 hari lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Keran air bocor sudah seminggu dan belum ada perbaikan. Air terus mengalir menyebabkan lantai licin berbahaya.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 3 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
-                <a class="text-decoration-none px-3 text-white">anonymous</a>
+                <a class="text-decoration-none px-3 text-white">Anonymous</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/image.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/image.png" class="card-img-top" alt="Laporan Anonim" />
               <div class="card-body">
-                <h5 class="card-title">Ada anonymous</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Tindakan Bullying di Kelas X RPL</h5>
+                  <span class="badge status-baru text-white ms-2 flex-shrink-0">Baru</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user-secret me-1"></i>Anonim &bull; 1 minggu lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Ada tindakan perundungan verbal yang terjadi secara rutin. Korban takut melapor secara terbuka.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 4 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
                 <a class="text-decoration-none px-3 text-white">Akademik</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/Akademik.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/Akademik.png" class="card-img-top" alt="Laporan Akademik" />
               <div class="card-body">
-                <h5 class="card-title">Pelajaran sudah di mengerti</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Jadwal Ujian Berubah Mendadak</h5>
+                  <span class="badge status-ditangani text-white ms-2 flex-shrink-0">Ditangani</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user me-1"></i>Rizky &bull; 5 hari lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Jadwal ujian tengah semester berubah mendadak tanpa pemberitahuan resmi sehingga siswa tidak siap.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 5 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
                 <a class="text-decoration-none px-3 text-white">Fasilitas</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/keran-rusak.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/keran-rusak.png" class="card-img-top" alt="Fasilitas" />
               <div class="card-body">
-                <h5 class="card-title">kerannya Rusak</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  So--me quick example text to build on the card title and make
-                  up the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">AC di Lab Komputer Tidak Berfungsi</h5>
+                  <span class="badge status-proses text-white ms-2 flex-shrink-0">Diproses</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user me-1"></i>Siti &bull; 6 hari lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  AC di lab komputer sudah rusak selama 2 minggu. Suhu ruangan sangat panas dan mengganggu konsentrasi saat praktik.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 6 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
-                <a class="text-decoration-none px-3 text-white">anonymous</a>
+                <a class="text-decoration-none px-3 text-white">Anonymous</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/image.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/image.png" class="card-img-top" alt="Laporan Anonim" />
               <div class="card-body">
-                <h5 class="card-title">Ada anonymous</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Perilaku Tidak Pantas di Lingkungan Sekolah</h5>
+                  <span class="badge status-baru text-white ms-2 flex-shrink-0">Baru</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user-secret me-1"></i>Anonim &bull; 2 minggu lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Ada oknum yang sering berperilaku tidak pantas di area kantin. Perlu perhatian dari pihak guru BK.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 7 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
                 <a class="text-decoration-none px-3 text-white">Akademik</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/Akademik.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/Akademik.png" class="card-img-top" alt="Laporan Akademik" />
               <div class="card-body">
-                <h5 class="card-title">Pelajaran sudah di mengerti</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Tugas Berlebihan Saat Libur Sekolah</h5>
+                  <span class="badge status-ditangani text-white ms-2 flex-shrink-0">Ditangani</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user me-1"></i>Bagas &bull; 10 hari lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Pemberian tugas yang berlebihan saat libur sekolah membuat siswa tidak bisa beristirahat dengan baik.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 8 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
                 <a class="text-decoration-none px-3 text-white">Fasilitas</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/keran-rusak.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/keran-rusak.png" class="card-img-top" alt="Fasilitas Rusak" />
               <div class="card-body">
-                <h5 class="card-title">kerannya Rusak</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  So--me quick example text to build on the card title and make
-                  up the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Toilet Putri Lantai 3 Kotor dan Berbau</h5>
+                  <span class="badge status-proses text-white ms-2 flex-shrink-0">Diproses</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user me-1"></i>Dina &bull; 4 hari lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Kondisi toilet putri lantai 3 sangat tidak layak. Perlu pembersihan rutin dan perbaikan fasilitas segera.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
+
+          <!-- Card 9 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
+            <div class="report-card card">
               <div class="kategori position-absolute">
-                <a class="text-decoration-none px-3 text-white">anonymous</a>
+                <a class="text-decoration-none px-3 text-white">Anonymous</a>
               </div>
-              <img
-                style="height: 300px; object-fit: cover; overflow: hidden"
-                src="./assets/images/image.png"
-                class="card-img-top"
-                alt=""
-              />
+              <img style="height: 260px; object-fit: cover;" src="./assets/images/image.png" class="card-img-top" alt="Laporan Anonim" />
               <div class="card-body">
-                <h5 class="card-title">Ada anonymous</h5>
-                <small
-                  >By: <a class="text-decoration-none">Fathan</a> 2 years
-                  ago</small
-                >
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card’s content.
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-semibold mb-0">Diskriminasi Antar Siswa di Kelas</h5>
+                  <span class="badge status-baru text-white ms-2 flex-shrink-0">Baru</span>
+                </div>
+                <small class="text-secondary"><i class="fa-solid fa-user-secret me-1"></i>Anonim &bull; 3 minggu lalu</small>
+                <p class="card-text mt-2 text-secondary small">
+                  Terdapat perlakuan tidak adil terhadap beberapa siswa berdasarkan status ekonomi. Perlu penanganan segera dari wali kelas.
                 </p>
-                <a href="report-detail.html" class="btn btn-primary"
-                  >Selengkapnya......</a
-                >
+                <a href="report-detail.html" class="btn btn-primary btn-sm">Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- pagination -->
-        <nav aria-label="Page navigation example">
+        <nav aria-label="Navigasi halaman laporan">
           <ul class="pagination justify-content-center mt-5">
             <li class="page-item disabled">
-              <a class="page-link" href="#">Previous</a>
+              <a class="page-link" href="#">&laquo; Sebelumnya</a>
             </li>
             <li class="page-item active">
               <a class="page-link" href="#">1</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" href="#">Berikutnya &raquo;</a></li>
           </ul>
         </nav>
       </div>
     </section>
 
-    <!-- Modal -->
+    <!-- Modal Tambah Laporan -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white fw-semibold">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
-              <i class="fa-solid fa-pen-to-square"></i> Formulir tambah Laporan
+              <i class="fa-solid fa-pen-to-square me-1"></i> Formulir Tambah Laporan
             </h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form action="">
-            <div class="modal-body p-5">
+            <div class="modal-body p-4 p-lg-5">
               <div class="mb-3">
-                <label class="form-label fw-semibold" for="">Judul Laporan:</label>
-                <input class="form-control shadow-sm" type="text" placeholder="Masukkan apa gitu...">
+                <label class="form-label fw-semibold" for="judulLaporan">Judul Laporan: <span class="text-danger">*</span></label>
+                <input id="judulLaporan" class="form-control shadow-sm" type="text" placeholder="Contoh: Keran air di toilet lantai 2 bocor">
               </div>
               <div class="mb-3">
-                <label class="form-label fw-semibold" for="">Pilih kategori:</label>
-                <select class="form-select shadow-sm">
-                  <option value="">None</option>
-                  <option value="akademik">Akademik</option>
-                  <option value="fasilitas">Fasilitas</option>
-                  <option value="anonymous">Anonymous</option>
+                <label class="form-label fw-semibold" for="kategoriLaporan">Pilih Kategori: <span class="text-danger">*</span></label>
+                <select id="kategoriLaporan" class="form-select shadow-sm">
+                  <option value="">-- Pilih Kategori --</option>
+                  <option value="akademik">&#127891; Akademik</option>
+                  <option value="fasilitas">&#128295; Fasilitas</option>
+                  <option value="anonymous">&#129399; Anonymous (Identitas dirahasiakan)</option>
                 </select>
               </div>
               <div class="mb-3">
-                <label class="form-label fw-semibold" for="">isi Laporan:</label>
-                <textarea rows="6" class="form-control shadow-sm" placeholder="Masukan apa yang mau di YAAAPINGKAN!"></textarea>
+                <label class="form-label fw-semibold" for="isiLaporan">Isi Laporan: <span class="text-danger">*</span></label>
+                <textarea id="isiLaporan" rows="6" class="form-control shadow-sm" placeholder="Deskripsikan masalah secara detail: lokasi, waktu kejadian, dan dampak yang dirasakan..."></textarea>
               </div>
               <div class="mb-3">
-                <label class="form-label fw-semibold" for="">Upload Gambar:</label>
-                <input class="form-control" type="file" accept="image/">
+                <label class="form-label fw-semibold" for="uploadGambar">Upload Gambar (Opsional):</label>
+                <input id="uploadGambar" class="form-control shadow-sm" type="file" accept="image/*">
+                <div class="form-text text-secondary">Format: JPG, PNG, WEBP. Maksimal 5MB.</div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="reset" class="btn btn-secondary" >Reset</button>
-              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i>Kirim Laporan</button>
+              <button type="reset" class="btn btn-secondary"><i class="fa-solid fa-rotate-left me-1"></i> Reset</button>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-1"></i> Kirim Laporan</button>
             </div>
           </form>
         </div>
@@ -467,30 +433,17 @@
               <h3 class="mb-0 fw-bold">E-Report IDN</h3>
             </div>
             <p class="lh-lg m-0 opacity-75">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis
-              amet quis deleniti dolore magnam nisi.
+              Platform pengaduan digital untuk membantu siswa melaporkan masalah akademik dan fasilitas sekolah dengan mudah, cepat, dan transparan.
             </p>
           </div>
           <div class="col-md-2 text-primary d-flex flex-column gap-2">
             <h4 class="fw-bold mb-2">Menu</h4>
-            <a class="text-decoration-none opacity-75" href="index.html#hero"
-              >Home</a
-            >
-            <a class="text-decoration-none opacity-75" href="index.html#about"
-              >About</a
-            >
-            <a class="text-decoration-none opacity-75" href="index.html#service"
-              >Services</a
-            >
-            <a class="text-decoration-none opacity-75" href="index.html#recent"
-              >Recents</a
-            >
-            <a class="text-decoration-none opacity-75" href="index.html#faq"
-              >FAQ</a
-            >
-            <a class="text-decoration-none opacity-75" href="panduan.html"
-              >Guide</a
-            >
+            <a class="text-decoration-none opacity-75" href="index.html#hero">Home</a>
+            <a class="text-decoration-none opacity-75" href="index.html#about">About</a>
+            <a class="text-decoration-none opacity-75" href="index.html#service">Services</a>
+            <a class="text-decoration-none fw-semibold" href="report.html">Recents</a>
+            <a class="text-decoration-none opacity-75" href="index.html#faq">FAQ</a>
+            <a class="text-decoration-none opacity-75" href="panduan.html">Guide</a>
           </div>
           <div class="col-md-4 text-primary d-flex flex-column gap-2">
             <h4 class="fw-bold mb-2">Contact us</h4>
@@ -508,16 +461,15 @@
               href="https://wa.me/628119911321"
             >
               <i class="fa-brands fa-whatsapp"></i>
-              +628 119911321
+              +62 811-9911-321
             </a>
             <a
               target="_blank"
               class="d-flex align-items-center text-decoration-none opacity-75 gap-3"
-              href=""
+              href="https://maps.google.com"
             >
               <i class="fa-solid fa-location-dot"></i>
-              jln jln ke rumah mamat, rumahnya ada di serpong, yang nanya alamat
-              , giginya ompong😝😝
+              Serpong, Tangerang Selatan, Banten
             </a>
           </div>
         </div>
@@ -525,8 +477,7 @@
         <div class="copyright text-primary text-center">
           <p>
             &copy; Copyright by
-            <span class="fw-bold">Anonymous RPL B </span>2026, All right
-            reserved.
+            <span class="fw-bold">Tim RPL B </span>2026. All rights reserved.
           </p>
         </div>
       </div>
